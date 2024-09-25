@@ -14,7 +14,6 @@
 #    under the License.
 
 import netaddr
-import six
 
 try:
     from oslo_log import log as logging
@@ -42,7 +41,7 @@ def generate_duid(mac):
 
     0x00 + mac with last 3 hex + mac with 6 hex
     """
-    valid = mac and isinstance(mac, six.string_types)
+    valid = mac and isinstance(mac, str)
     if not valid:
         raise ValueError("Invalid argument was passed")
     return "00:" + mac[9:] + ":" + mac

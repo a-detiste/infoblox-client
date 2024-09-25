@@ -12,7 +12,6 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
-import six
 
 try:
     from oslo_log import log as logging
@@ -546,7 +545,7 @@ class IP(SubObjects):
             return IPv4(ip=ip, mac=mac, **kwargs)
 
     def __eq__(self, other):
-        if isinstance(other, six.string_types):
+        if isinstance(other, str):
             return self.ip == other
         elif isinstance(other, self.__class__):
             return self.ip == other.ip
@@ -14341,7 +14340,7 @@ class HostRecordV4(HostRecord):
             ipXaddr is also filled to be able perform search on NIOS
             and verify that no such host record exists yet.
         """
-        if isinstance(ips, six.string_types):
+        if isinstance(ips, str):
             setattr(self, ipaddr_name, ips)
         elif isinstance(ips, (list, tuple)) and isinstance(ips[0], IP):
             setattr(self, ipaddr_name, ips[0].ip)
@@ -14496,7 +14495,7 @@ class HostRecordV6(HostRecord):
             ipXaddr is also filled to be able perform search on NIOS
             and verify that no such host record exists yet.
         """
-        if isinstance(ips, six.string_types):
+        if isinstance(ips, str):
             setattr(self, ipaddr_name, ips)
         elif isinstance(ips, (list, tuple)) and isinstance(ips[0], IP):
             setattr(self, ipaddr_name, ips[0].ip)
