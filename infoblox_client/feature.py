@@ -13,8 +13,6 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import six
-
 from infoblox_client import exceptions as ib_ex
 
 FEATURE_VERSIONS = {
@@ -42,7 +40,7 @@ class Feature(object):
         if feature_versions is None:
             feature_versions = FEATURE_VERSIONS
 
-        if isinstance(version, six.string_types):
+        if isinstance(version, str):
             wapi_version = version
         elif hasattr(version, 'wapi_version'):
             wapi_version = getattr(version, 'wapi_version')

@@ -15,7 +15,6 @@
 
 import unittest
 import mock
-import six
 
 from infoblox_client import exceptions
 from infoblox_client import object_manager as om
@@ -31,7 +30,7 @@ class PayloadMatcher(object):
     def __eq__(self, actual):
         expected = []
 
-        for key, expected_value in six.iteritems(self.args):
+        for key, expected_value in self.args.items():
             expected.append(self._verify_value_is_expected(actual, key,
                                                            expected_value))
 

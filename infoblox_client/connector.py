@@ -17,7 +17,6 @@ import functools
 import re
 import urllib
 import requests
-import six
 import urllib3
 import time
 from requests import exceptions as req_exc
@@ -725,7 +724,7 @@ class Connector(object):
         Raises:
             ValueError: if an invalid version is passed
         """
-        valid = wapi_version and isinstance(wapi_version, six.string_types)
+        valid = wapi_version and isinstance(wapi_version, str)
         if not valid:
             raise ValueError("Invalid argument was passed")
         version_match = re.search(r'(\d+)\.(\d+)', wapi_version)
